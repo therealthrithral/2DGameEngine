@@ -27,10 +27,10 @@ public class Window {
         this.width = 1920;
         this.height = 1080;
         this.title = "Mario";
-        r = 1;
-        g = 1;
-        b = 1;
-        a = 1;
+        r = 0.7f;
+        g = 0.2f;
+        b = 0.1f;
+        a = 1   ;
     }
     public static void changeScene(int newScene){
         switch(newScene){
