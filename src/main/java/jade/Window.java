@@ -25,8 +25,8 @@ public class Window {
 
 
     private Window(){
-        this.width = 1920;
-        this.height = 1080;
+        this.width = 720;
+        this.height = 980;
         this.title = "Mario";
         r =1;
         g =1;
@@ -131,7 +131,7 @@ public class Window {
         float beginTime = (float)glfwGetTime();
         float endTime;
         float dt = -1.0f;
-
+        currentScene.load();
         while (!glfwWindowShouldClose(glfwWindow)){
             // Poll Events
             glfwPollEvents();
@@ -149,6 +149,7 @@ public class Window {
              dt = endTime - beginTime;
             beginTime = endTime;
         }
+        currentScene.saveExit();
     }
 
     public static int getWidth(){
