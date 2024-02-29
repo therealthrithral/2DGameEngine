@@ -13,6 +13,8 @@ public class Texture {
     private int texID;
     private int width, height;
 
+
+
 //    public Texture(String filepath){
 //
 //    }
@@ -70,5 +72,8 @@ public class Texture {
     }
     public int getHeight(){
         return this.height;
+    }
+    public int getId(){
+        return texID;
     }
 }
