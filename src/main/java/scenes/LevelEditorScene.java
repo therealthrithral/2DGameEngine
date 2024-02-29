@@ -1,24 +1,20 @@
-package jade;
+package scenes;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import components.RigidBody;
-import components.Sprite;
-import components.SpriteRenderer;
-import components.Spritesheet;
+import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
+import jade.*;
 import jade.util.AssetPool;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
-
-import java.sql.SQLOutput;
 
 public class LevelEditorScene extends Scene {
     private GameObject obj1;
     private Spritesheet sprites;
     private SpriteRenderer obj1Sprite;
+
+    MouseControls mouseControls = new MouseControls();
 
     public LevelEditorScene() {
 
@@ -32,6 +28,7 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
         if (levelLoaded){
             this.activeGameObject = gameObjects.get(0);
+            
             return;
         }
 
@@ -76,7 +73,7 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float dt) {
         MouseListener.getOrthoX();
-
+        mouseControls.update(dt);
 
 
         // FPS
@@ -112,7 +109,9 @@ public class LevelEditorScene extends Scene {
 
             ImGui.pushID(i);
             if(ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x, texCoords[2].y)){
-                System.out.println("Button " + i +" Clicked");
+                GameObject object = Prefabs.generateSpriteObject(sprite, spriteWidth, spriteHeight);
+                // Attach this to mouse cursor
+                mouseControls.pickupObject(object);
             }
             ImGui.popID();
 

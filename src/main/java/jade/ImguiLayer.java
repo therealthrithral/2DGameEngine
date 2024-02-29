@@ -10,7 +10,7 @@ import imgui.flag.ImGuiMouseCursor;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
-
+import scenes.Scene;
 
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -97,6 +97,10 @@ public class ImguiLayer {
             io.setKeyShift(io.getKeysDown(GLFW_KEY_LEFT_SHIFT) || io.getKeysDown(GLFW_KEY_RIGHT_SHIFT));
             io.setKeyAlt(io.getKeysDown(GLFW_KEY_LEFT_ALT) || io.getKeysDown(GLFW_KEY_RIGHT_ALT));
             io.setKeySuper(io.getKeysDown(GLFW_KEY_LEFT_SUPER) || io.getKeysDown(GLFW_KEY_RIGHT_SUPER));
+
+            if(!io.getWantCaptureKeyboard()){
+                KeyListener.keyCallback(w, key, scancode, action, mods);
+            }
         });
 
         glfwSetCharCallback(glfwWindow, (w, c) -> {
@@ -119,6 +123,11 @@ public class ImguiLayer {
             if (!io.getWantCaptureMouse() && mouseDown[1]) {
                 ImGui.setWindowFocus(null);
             }
+            if (!io.getWantCaptureMouse()){
+                MouseListener.mouseButtonCallback(w, button, action, mods);
+            }
+
+
         });
 
         glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
