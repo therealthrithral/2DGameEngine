@@ -3,9 +3,12 @@ package jade;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import renderer.DebugDraw;
 import scenes.LevelEditorScene;
 import scenes.LevelScene;
 import scenes.Scene;
+
+import javax.swing.*;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -28,8 +31,8 @@ public class Window {
 
 
     private Window(){
-        this.width = 720;
-        this.height = 980;
+        this.width = 1600;
+        this.height = 900;
         this.title = "Mario";
         r =1;
         g =1;
@@ -138,10 +141,13 @@ public class Window {
             // Poll Events
             glfwPollEvents();
 
+            DebugDraw.beginFrame();
+
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
             if(dt>=0){
+                DebugDraw.draw();
                 currentScene.update(dt);
             }
             this.imguiLayer.update(dt, currentScene);
