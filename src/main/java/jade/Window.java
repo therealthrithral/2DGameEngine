@@ -17,7 +17,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 
 public class Window {
-     private int width, height;
+    private int width, height;
     private String title;
     private static Window window = null;
     private long glfwWindow;
@@ -120,7 +120,7 @@ public class Window {
 
         // This line is critical for LWJGL iteroperation with GLFW's
         // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the contect that is current in the current thread,
+        // LWJGL detects the content that is current in the current thread,
         // Creates the GLCapabilities instance and makes the OpenGL
         // Bindings available to use.
         GL.createCapabilities();

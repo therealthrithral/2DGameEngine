@@ -9,6 +9,7 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -163,6 +164,14 @@ public class DebugDraw {
     // ====================== \\
     //   Add Circle Methods   \\
     // ====================== \\
+
+    public static void addCircle(Vector2f center, float radius){
+        addCircle(center, radius, new Vector3f(0,1,0), 1);
+    }
+
+    public static void addCircle(Vector2f center, float radius, Vector3f color){
+        addCircle(center, radius, color, 1);
+    }
 
     public static void addCircle(Vector2f center,float radius, Vector3f color, int lifetime) {
         Vector2f[] points = new Vector2f[1440];

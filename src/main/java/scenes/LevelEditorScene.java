@@ -78,7 +78,8 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float dt) {
         levelEditorStuff.update(dt);
-        DebugDraw.addCircle(new Vector2f(x,y), 64, new Vector3f(0,1,0), 1);
+        DebugDraw.addBox2D(new Vector2f(x, y), new Vector2f(32, 32), 1);
+        DebugDraw.addCircle(new Vector2f(x,y), 64, new Vector3f(1,0,0), 1);
         x += .50f + dt;
         y += .50f + dt;
         // Debug Drawings
